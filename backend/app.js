@@ -4,9 +4,9 @@ const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const fileUpload = require("express-fileupload");
 const path = require("path");
-
 const errorMiddleware = require("./middleware/error");
-
+const swaggerUi = require('swagger-ui-express');
+const swaggerFile = require('./swagger-output.json');
 // Config
 if (process.env.NODE_ENV !== "PRODUCTION") {
   require("dotenv").config({ path: "backend/config/config.env" });
@@ -27,14 +27,16 @@ app.use("/api/v1", product);
 app.use("/api/v1", user);
 app.use("/api/v1", order);
 app.use("/api/v1", payment);
+// API Swagger documentation
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
 app.use(express.static(path.join(__dirname, "../frontend/build")));
 
 app.get("*", (req, res) => {
   res.sendFile(path.resolve(__dirname, "../frontend/build/index.html"));
 });
-
-// Middleware for Errors
+ 
+// Middleware for Errors 
 app.use(errorMiddleware);
 
 module.exports = app;

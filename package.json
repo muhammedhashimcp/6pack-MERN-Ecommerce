@@ -4,6 +4,7 @@
   "description": "",
   "main": "backend/server.js",
   "scripts": {
+    "swagger-autogen": "node ./backend/swagger.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node backend/server.js",
     "dev": "nodemon backend/server.js",
@@ -23,6 +24,10 @@
     "mongoose": "^5.13.5",
     "nodemailer": "^6.6.3",
     "stripe": "^8.174.0",
+    "swagger-ui-express": "^4.6.0",
     "validator": "^13.6.0"
+  },
+  "devDependencies": {
+    "swagger-autogen": "^2.23.1"
   }
 }

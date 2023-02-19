@@ -9,9 +9,9 @@ const cloudinary = require("cloudinary");
 // Register a User
 exports.registerUser = catchAsyncErrors(async (req, res, next) => {
   const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
-    folder: "avatars",
-    width: 150,
-    crop: "scale",
+		folder: 'mern-ecommerce-sixpack/avatars',
+		width: 150,
+		crop: 'scale',
   });
 
   const { name, email, password } = req.body;
@@ -188,10 +188,10 @@ exports.updateProfile = catchAsyncErrors(async (req, res, next) => {
     await cloudinary.v2.uploader.destroy(imageId);
 
     const myCloud = await cloudinary.v2.uploader.upload(req.body.avatar, {
-      folder: "avatars",
-      width: 150,
-      crop: "scale",
-    });
+		folder: 'mern-ecommerce-sixpack/avatars',
+		width: 150,
+		crop: 'scale',
+	});
 
     newUserData.avatar = {
       public_id: myCloud.public_id,
