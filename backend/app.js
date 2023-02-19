@@ -8,9 +8,9 @@ const errorMiddleware = require("./middleware/error");
 const swaggerUi = require('swagger-ui-express');
 const swaggerFile = require('./swagger-output.json');
 // Config
-if (process.env.NODE_ENV !== "PRODUCTION") {
-  require("dotenv").config({ path: "backend/config/config.env" });
-}
+// if (process.env.NODE_ENV !== "PRODUCTION") {
+//   require("dotenv").config({ path: "backend/config/config.env" });
+// }
 
 app.use(express.json());
 app.use(cookieParser());
